@@ -4,6 +4,6 @@
 }
 
 .panel-heading {
-	color: white;
-	background-color: black;
+	color: white !IMPORTANT;
+	background-color: black !IMPORTANT;
 }
