@@ -4,6 +4,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var reservations = require('./app/data/reservations.js');
 
 // Sets up the Express App
 // =============================================================
@@ -23,8 +24,9 @@ app.get('/', function (req, res) {
 
 app.get('/add', function (req, res) {
 	res.sendFile(path.join(__dirname, 'add.html'));
-});s
+});
 
+reservations(app);
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function () {
