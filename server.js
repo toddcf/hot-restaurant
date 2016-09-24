@@ -1,8 +1,12 @@
+
 // Dependencies
 // =============================================================
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+
+var reservations = require('./app/data/reservations.js');
+
 var htmlrouting = require('./app/routing/html-routes.js');
 
 console.log(htmlrouting);
@@ -17,22 +21,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-<<<<<<< HEAD
-// Basic route that sends the user first to the AJAX Page
-app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, 'view.html'));
-});
-
-app.get('/add', function (req, res) {
-	res.sendFile(path.join(__dirname, 'add.html'));
-});
-
+app.use(htmlrouting)
+reservations(app);
 // Starts the server to begin listening
 // =============================================================
-=======
-app.use(htmlrouting)
-
->>>>>>> 599ea8c635cef7dd0c42a8424469febd99a82fc6
 app.listen(PORT, function () {
 	console.log('App listening on PORT ' + PORT);
 });
